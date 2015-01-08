@@ -1,3 +1,6 @@
+<% require 'yaml' %>
+<% thing = YAML.load_file('properties/features.yaml') %>
+
 <div class=feature-banner-container>
-	Banner!?
+	<%= thing['features'].to_a.last['shortDesc'].html_safe %>
 </div>

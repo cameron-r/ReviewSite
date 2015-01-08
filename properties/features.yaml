@@ -1,0 +1,10 @@
+---
+features:
+    - shortDesc: this <div>is</div> a feature
+      date: 1-1-2015
+    
+    - shortDesc: this is another feature
+      date: 1-2-2015
+
+    - shortDesc: this <div>is</div> the latest feature
+      date: 1-3-2015
