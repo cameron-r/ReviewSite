@@ -19,5 +19,13 @@ module ApplicationHelper
   def to_yes_no_string(boolean)
     boolean ? "Yes" : "No"
   end
+  
+  def feature_list
+      if not defined?(@feature_list)
+          @feature_list = FeatureList.new("properties/features.yaml")
+      end
+      
+      @feature_list
+  end
 
 end
