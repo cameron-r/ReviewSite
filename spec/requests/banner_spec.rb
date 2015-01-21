@@ -1,17 +1,30 @@
 require 'spec_helper'
 
-describe "feature banner" do
+describe "Feature banner: " do
     let (:user) { FactoryGirl.create :user }
     
-    context "user has not dismissed new feature" do
-    subject { page }
+    context "when user has not dismissed the banner" do
+        subject { page }
         before do
             sign_in user
             visit root_url
         end
         
-        it "should have the feature banner container" do
-            page.should have_selector ".feature-banner-container"
+        it "should have the feature banner" do
+            page.should have_selector "#feature-banner-container"
+        end
+        
+        context "when user dismisses the banner" do
+            subject { page }
+            before do
+                sign_in user
+                
+                click_button('feature-banner-close')
+            end
+            
+            it "should remove the banner", js: true do
+                page.should_not have_selector "#feature-banner-container"
+            end
         end
     end
 end
