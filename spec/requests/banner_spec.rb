@@ -25,6 +25,17 @@ describe "Feature banner: " do
             it "should remove the banner", js: true do
                 page.should_not have_selector "#feature-banner-container"
             end
+            
+            context "when user visits other pages after dismissing the banner" do
+                subject { page }
+                before do
+                    visit '/'
+                end
+                
+                it "should not show the banner", js: true do
+                    page.should_not have_selector "#feature-banner-container"
+                end
+            end
         end
     end
 end

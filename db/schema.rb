@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150112221711) do
+ActiveRecord::Schema.define(:version => 20150122230919) do
 
   create_table "additional_emails", :force => true do |t|
     t.string   "email"
@@ -139,10 +139,11 @@ ActiveRecord::Schema.define(:version => 20150112221711) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.boolean  "admin",      :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "admin",             :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "okta_name"
+    t.integer  "last_feature_seen"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
   def ac?
     !self.associate_consultant.nil? && self.associate_consultant.persisted?
   end
+  
+  def latest_feature_seen
+      self.latest_feature_seen
+  end
 
   private
 

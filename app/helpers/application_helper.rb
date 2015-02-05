@@ -27,5 +27,9 @@ module ApplicationHelper
       
       @feature_list
   end
+  
+  def seen_latest_feature?(user)
+     feature_list.latest['id'] <= user.latest_feature_seen 
+  end
 
 end
