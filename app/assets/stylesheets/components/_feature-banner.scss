@@ -1,4 +1,11 @@
 #feature-banner-container {
-	margin-top: 60px;
-	background: lightblue;
+	width: 30%;
+	text-align: center;
+	margin: 60px auto;
+	background: $brand-mint;
+	border-radius: 30px;
+}
+
+.hidden {
+	display: none !important;
 }

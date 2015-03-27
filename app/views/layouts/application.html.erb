@@ -10,10 +10,8 @@
   </head>
   <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
     <section id="<%= controller_name %>-<%= action_name %>">
-        <%= feature_list.latest['banner_text'].html_safe %>
       <%= render 'layouts/header' %>
-      
-      <%= render 'layouts/banner' if seen_latest_feature?(current_user) %>
+      <%= render 'layouts/banner', path_to_user: user_path(current_user) if !seen_latest_feature?(current_user) %>
       <section class="content-container">
 
         <section class="row">

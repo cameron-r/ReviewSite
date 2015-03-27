@@ -21,15 +21,17 @@ module ApplicationHelper
   end
   
   def feature_list
-      if not defined?(@feature_list)
-          @feature_list = FeatureList.new("properties/features.yaml")
-      end
+    if not defined?(@feature_list)
+      @feature_list = FeatureList.new("properties/features.yaml")
+    end
       
-      @feature_list
+    @feature_list
   end
   
   def seen_latest_feature?(user)
-     feature_list.latest['id'] <= user.latest_feature_seen 
+    if (user && user.respond_to?(:latest_feature_seen) && user.latest_feature_seen)
+      feature_list.latest['id'] <= user.latest_feature_seen
+    end
   end
 
 end

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include ModelsModule
-  attr_accessible :name, :okta_name, :email, :admin, :associate_consultant_attributes
+  attr_accessible :name, :okta_name, :email, :admin, :associate_consultant_attributes, :last_feature_seen
 
   has_many :coachees, :class_name => "AssociateConsultant", :foreign_key => "coach_id"
   has_many :additional_emails, class_name: "AdditionalEmail",
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
   
   def latest_feature_seen
-      self.latest_feature_seen
+    self.last_feature_seen
   end
 
   private

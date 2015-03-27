@@ -54,6 +54,8 @@ ReviewSite::Application.routes.draw do
 
   devise_for :additional_emails
 
+  post 'users/:id/seen_feature_banner/:banner_id', to:'users#seen_feature_banner'
+
   get 'users/:id/add_email', to: 'users#add_email'
   get 'users/:id/remove_email', to: 'users#remove_email'
 

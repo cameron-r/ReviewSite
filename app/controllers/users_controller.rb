@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  before_filter :load_user, :only => [:show, :edit, :update, :destroy, :feedbacks]
+  before_filter :load_user, :only => [:show, :edit, :update, :destroy, :feedbacks, :seen_feature_banner]
   respond_to :js
 
   def new
@@ -158,6 +158,19 @@ class UsersController < ApplicationController
   def create_reviews
     reviews = Review.create_default_reviews(@user.associate_consultant)
     UserMailer.reviews_creation(reviews[0]).deliver
+  end
+  
+  def seen_feature_banner
+    respond_to do |format|
+      format.json {
+        @user.last_feature_seen = params['banner_id']
+        if @user.save
+          render :json => "success"
+        else
+          render :json => "failed to save"
+        end
+      }
+    end
   end
 
   private

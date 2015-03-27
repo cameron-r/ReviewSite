@@ -4,6 +4,7 @@ module SessionsHelper
   end
 
   def current_user
+    binding.pry()
     @current_user || reset_current_user
   end
 

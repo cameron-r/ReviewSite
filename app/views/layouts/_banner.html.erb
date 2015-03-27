@@ -1,4 +1,8 @@
 <div id=feature-banner-container>
 	<%= feature_list.latest['banner_text'].html_safe %>
-	<button id=feature-banner-close>X</button>
+	<form action="<%= path_to_user %>/seen_feature_banner/1" method="POST">
+		<input type="text" id=feature-banner-id class="hidden" value="<%= feature_list.latest['id'] %>">
+		<label for=feature-banner-close>X</label>
+		<input type="submit" id=feature-banner-close class="hidden">
+	</form>
 </div>
